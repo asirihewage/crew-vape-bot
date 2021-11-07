@@ -1,0 +1,61 @@
+2021-11-07 15:38:14,052 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:38:14,052 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:38:18,637 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:38:18,637 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:38:26,548 * root * ERROR * [bot.py:251             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 15:40:28,253 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:40:28,253 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:40:28,476 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:40:28,478 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:40:38,184 * root * ERROR * [bot.py:106         register_user() ] User saved in Database
+2021-11-07 15:40:38,855 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 15:41:12,441 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:41:12,441 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:41:12,728 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:41:12,729 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:41:18,500 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:41:18,501 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:41:18,740 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:41:18,741 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:41:47,335 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 15:42:03,335 * root * ERROR * [bot.py:173           save_answer() ] Question and answer saved in Database
+2021-11-07 15:42:03,444 * root * ERROR * [bot.py:218             check_msg() ] Question: hi Answer:  hi
+2021-11-07 15:42:47,497 * root * ERROR * [bot.py:173           save_answer() ] Question and answer saved in Database
+2021-11-07 15:42:47,661 * root * ERROR * [bot.py:218             check_msg() ] Question: Hello how are you? Answer: Hi I'm fine. Hope you are doing well!
+2021-11-07 15:42:51,177 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 15:43:04,329 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 15:43:30,690 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:43:30,690 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:43:31,301 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:43:31,302 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:45:38,420 * root * ERROR * [bot.py:251             check_msg() ] [Errno 2] No such file or directory: '/home/ubuntu/intelb_bot/data/schedule.txt'
+2021-11-07 15:46:16,357 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 15:46:16,357 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 15:46:16,834 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 15:46:16,835 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 15:46:23,309 * root * ERROR * [bot.py:251             check_msg() ] [Errno 2] No such file or directory: '/home/ubuntu/intelb_bot/data/schedule.txt'
+2021-11-07 16:00:40,773 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 16:00:40,773 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 16:00:41,946 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 16:00:41,946 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 16:00:50,948 * root * ERROR * [bot.py:251             check_msg() ] [Errno 2] No such file or directory: '/home/ubuntu/intelb_bot/data/schedule.txt'
+2021-11-07 16:01:37,372 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 16:01:37,372 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 16:01:37,516 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 16:01:37,516 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 16:01:46,090 * root * ERROR * [bot.py:228             check_msg() ] Scheduled message will be set in each 5 minutes
+2021-11-07 16:02:27,644 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-07 16:02:27,644 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 16:02:27,862 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 16:02:27,863 * root * ERROR * [bot.py:345              <module>() ] Poling started...
+2021-11-07 16:02:34,721 * root * ERROR * [bot.py:228             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-07 16:02:48,459 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:02:58,106 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:03:02,857 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:03:17,574 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:03:25,500 * root * ERROR * [bot.py:173           save_answer() ] Question and answer saved in Database
+2021-11-07 16:03:25,630 * root * ERROR * [bot.py:218             check_msg() ] Question: hello Answer:  hello
+2021-11-07 16:03:39,176 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:03:56,377 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:04:06,859 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 16:08:36,980 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database

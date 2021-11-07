@@ -1,8 +1,4 @@
 # Telegram Bot
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ggZkgzdYXiJ4uUY2dmib15Or4tvp9FvR?usp=sharing)
-
-You will find it at https://t.me/messagecollector_bot
-![Diagram](src/Diagram.png)
 
 ### Setting up the environment
 Telegram bot is using these python dependencies

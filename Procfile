@@ -1,1 +1,1 @@
-worker: python3 TelegramBotForAstoneshi.py
+worker: python3 bot.py

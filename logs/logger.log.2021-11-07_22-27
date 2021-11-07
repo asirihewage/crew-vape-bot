@@ -1,0 +1,2 @@
+2021-11-07 22:27:14,495 * root * ERROR * [bot.py:173           save_answer() ] Question and answer saved in Database
+2021-11-07 22:27:14,889 * root * ERROR * [bot.py:218             check_msg() ] Question: Who are you? Answer:  I'm Crew Vape Bot.

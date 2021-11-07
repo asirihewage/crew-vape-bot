@@ -1,0 +1,29 @@
+2021-11-07 20:25:47,431 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:25:51,876 * root * ERROR * [bot.py:106         register_user() ] User saved in Database
+2021-11-07 20:25:52,793 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:26:08,600 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:26:30,772 * root * ERROR * [bot.py:106         register_user() ] User saved in Database
+2021-11-07 20:26:31,428 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:26:39,190 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:26:43,676 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:26:55,754 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:27:19,732 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:27:35,219 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:28:46,570 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:29:01,675 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:29:08,468 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:29:09,316 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:29:09,666 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:29:26,874 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:30:46,320 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:31:23,415 * root * ERROR * [bot.py:323        callback_query() ] [Errno 2] No such file or directory: 'data/747271345_session.txt'
+2021-11-07 20:32:06,441 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:32:18,012 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:32:25,194 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:32:39,174 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:32:54,876 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:33:15,187 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:33:29,332 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:33:54,311 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:33:56,615 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-07 20:34:05,589 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database

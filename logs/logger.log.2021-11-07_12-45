@@ -1,0 +1,40 @@
+2021-11-07 11:53:07,627 * root * ERROR * [bot.py:53               connect() ] Database Client Connection failed.
+2021-11-07 11:53:35,811 * root * ERROR * [bot.py:53               connect() ] Database Client Connection failed.
+2021-11-07 11:53:57,029 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-07 11:53:57,823 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-07 11:55:08,011 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 11:55:08,012 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-07 11:55:08,257 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-07 12:11:14,700 * root * ERROR * [bot.py:103     get_all_schedules() ] Retrieving schedules
+2021-11-07 12:11:14,841 * root * ERROR * [bot.py:142             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 12:12:40,792 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 12:12:40,793 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-07 12:12:41,039 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-07 12:12:41,040 * root * ERROR * [bot.py:224              <module>() ] Poling started...
+2021-11-07 12:12:43,233 * root * ERROR * [bot.py:144             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 12:13:20,550 * root * ERROR * [bot.py:111     get_all_schedules() ] count_documents() missing 1 required positional argument: 'filter'
+2021-11-07 12:13:23,993 * root * ERROR * [bot.py:111     get_all_schedules() ] count_documents() missing 1 required positional argument: 'filter'
+2021-11-07 12:13:59,716 * root * ERROR * [bot.py:144             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 12:16:02,330 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 12:16:02,330 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-07 12:16:02,582 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-07 12:16:02,583 * root * ERROR * [bot.py:224              <module>() ] Poling started...
+2021-11-07 12:16:10,300 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-07 12:16:10,414 * root * ERROR * [bot.py:144             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 12:43:33,105 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 12:43:33,106 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-07 12:43:33,711 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-07 12:43:33,712 * root * ERROR * [bot.py:242              <module>() ] Poling started...
+2021-11-07 12:43:41,260 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-07 12:43:41,364 * root * ERROR * [bot.py:162             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-07 12:44:32,807 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 12:44:32,807 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-07 12:44:33,037 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-07 12:44:33,038 * root * ERROR * [bot.py:242              <module>() ] Poling started...
+2021-11-07 12:44:37,649 * root * ERROR * [bot.py:162             check_msg() ] 'dict' object has no attribute 'text'
+2021-11-07 12:45:02,998 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-07 12:45:02,998 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-07 12:45:03,146 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-07 12:45:03,146 * root * ERROR * [bot.py:242              <module>() ] Poling started...
+2021-11-07 12:45:11,817 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-07 12:45:12,034 * root * ERROR * [bot.py:162             check_msg() ] 'Message' object has no attribute 'message'

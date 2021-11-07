@@ -1,0 +1,2 @@
+2021-11-06 18:28:16,805 * root * ERROR * [bot.py:116             check_msg() ] 'Message' object has no attribute 'message'
+2021-11-06 18:32:35,741 * root * ERROR * [bot.py:116             check_msg() ] 'Message' object has no attribute 'message'
