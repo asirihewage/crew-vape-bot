@@ -66,7 +66,7 @@ bot.send_message(chat_id, txt)
 #Ex: bot.send_message(-1001545752396, "Hi") -> 1664758714 is the chat ID (For private messages, group ID = Chat ID)
 ```
 ## Owner
-This repository is owned by @astoneshi 
+This repository is owned by @Ddqpv 
 
 ## License 
 MIT, Not for Commercial purpose

@@ -336,6 +336,16 @@ async def check_msg(Client, message):
         pass
 
 
+@app.on_message(filters.private & filters.command(['help'], ['/']), group=2)
+async def start(Client, message):
+    if isAdmin(message):
+        helpTextAdmin = f"* HELP TOPICS * \n /start start the bot"
+        await app.send_message(message.from_user.id, helpTextAdmin)
+    else:
+        helpTextUser = f"* HELP TOPICS * \n /start start the bot"
+        await app.send_message(message.from_user.id, helpTextUser)
+
+
 @app.on_message(filters.private & filters.command(['start'], ['/']), group=2)
 async def start(Client, message):
     if isAdmin(message):
@@ -384,7 +394,7 @@ def showAllUsers():
                 logger.error("Retrieving users to fetch...")
                 for user in usersCollection.find({"level": 0}):
                     row = [
-                        InlineKeyboardButton(text=f"{user['username']}", callback_data=f"profile {user['username']}"),
+                        InlineKeyboardButton(text=f"{user['username']}", callback_data=f"!profile {user['username']}"),
                         InlineKeyboardButton(text=f"X Remove", callback_data=f"!remove {user['username']}")
                     ]
                     rows.append(row)
@@ -412,11 +422,10 @@ def showAllAdmins():
                 logger.error("Retrieving admins to fetch...")
                 for user in usersCollection.find({"level": 1}):
                     row = [
-                        InlineKeyboardButton(text=f"{user['username']}", callback_data=f"profile {user['username']}"),
+                        InlineKeyboardButton(text=f"{user['username']}", callback_data=f"!profile {user['username']}"),
                         InlineKeyboardButton(text=f"X Remove", callback_data=f"!remove {user['username']}")
                     ]
                     rows.append(row)
-                print(rows)
                 return InlineKeyboardMarkup(rows)
         else:
             logger.error("Database connection error")
@@ -436,22 +445,21 @@ def showAllKeywords():
                 return InlineKeyboardMarkup(rows)
             if keywordsCollection.count_documents({"isKeyword": 1}) <= 0:
                 logger.error("No keywords")
-
             else:
                 logger.error("Retrieving keywords to fetch...")
                 for keyword in keywordsCollection.find({"isKeyword": 1}):
                     row = [
-                        InlineKeyboardButton(text=f"{keyword['question']}", callback_data=f""),
+                        InlineKeyboardButton(text=f"{keyword['question']}", callback_data=f"!answer {keyword['question']}"),
                         InlineKeyboardButton(text=f"X", callback_data=f"!removeKeyword {keyword['question']}")
                     ]
                     rows.append(row)
-                return InlineKeyboardMarkup(rows)
+                return None
         else:
             logger.error("Database connection error")
-            return InlineKeyboardMarkup(rows)
+            return None
     except Exception as er:
         logger.error(er)
-        return InlineKeyboardMarkup(rows)
+        return None
 
 
 @app.on_callback_query(group=2)
