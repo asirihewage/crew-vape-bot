@@ -25,6 +25,7 @@ schedule = 0
 ANSWER_ACCURACY_PERCENTAGE = 75
 
 app = Client("bot", bot_token=BOT_TOKEN, parse_mode="combined")
+scheduler = AsyncIOScheduler()
 
 # Initialize logging for debugging purpose
 formatter = logging.Formatter(
@@ -308,6 +309,7 @@ async def check_msg(Client, message):
                 f_search_query.write(f"{''.join(minutes)}")
                 f_search_query.close()
                 logger.error("Scheduled message will be set in each {} minutes".format(minutes))
+                scheduler.reschedule_job('scheduledJob', "interval", minutes=int(schedule))
                 await app.send_message(message.from_user.id,
                                        "Thank you! The scheduled message will be set in each {} minutes".format(
                                            minutes))
@@ -526,8 +528,7 @@ async def scheduledJob():
 # start polling to continuously listen for messages
 if os.path.isfile(f'data/schedule.txt') and schedule > 0:
     schedule = open(f'data/schedule.txt', "r").read()
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(scheduledJob, "interval", minutes=int(schedule))
+    scheduler.add_job(scheduledJob, "interval", minutes=int(schedule), id='scheduledJob')
     scheduler.start()
 
 logger.error("Poling started...")
