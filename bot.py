@@ -386,10 +386,9 @@ def showAllUsers():
             usersCollection = dbConnection.get_collection("users")
             if usersCollection.count_documents({"level": 0}) > 100:
                 logger.error("Too many users")
-                return InlineKeyboardMarkup(rows)
+                return None
             if usersCollection.count_documents({"level": 0}) <= 0:
                 logger.error("No users")
-
             else:
                 logger.error("Retrieving users to fetch...")
                 for user in usersCollection.find({"level": 0}):
@@ -450,10 +449,11 @@ def showAllKeywords():
                 for keyword in keywordsCollection.find({"isKeyword": 1}):
                     row = [
                         InlineKeyboardButton(text=f"{keyword['question']}", callback_data=f"!answer {keyword['question']}"),
-                        InlineKeyboardButton(text=f"X", callback_data=f"!removeKeyword {keyword['question']}")
+                        InlineKeyboardButton(text=f"{keyword['answer']}", callback_data=f"!answer {keyword['question']}"),
+                        InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeKeyword {keyword['question']}")
                     ]
                     rows.append(row)
-                return None
+                return InlineKeyboardMarkup(rows)
         else:
             logger.error("Database connection error")
             return None
