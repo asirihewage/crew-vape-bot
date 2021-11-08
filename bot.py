@@ -264,6 +264,21 @@ def remove_admin(admin):
         return False
 
 
+def checkKeywords(message):
+    try:
+        if dbConnection:
+            answersCollection = dbConnection.get_collection("answers")
+            for x in answersCollection.find():
+                for word in message.split(" "):
+                    if word in x['question']:
+                        answer = x['answer']
+                        return answer
+        else:
+            return None
+    except Exception as e:
+        logger.error(e)
+
+
 @app.on_message(filters.text & filters.private)
 async def check_msg(Client, message):
     try:
@@ -313,8 +328,11 @@ async def check_msg(Client, message):
                                            minutes))
 
             else:
+                checkKeyword = checkKeywords(message.text)
                 getAnswer = get_answer(message.text)
-                if getAnswer:
+                if checkKeyword:
+                    await app.send_message(message.from_user.id, f'{checkKeyword}')
+                elif getAnswer:
                     await app.send_message(message.from_user.id, f'{getAnswer}')
                 else:
                     messageObj = {
@@ -462,6 +480,23 @@ def showAllKeywords():
         return None
 
 
+def remove_keyword(keyword):
+    try:
+        if dbConnection:
+            answersCollection = dbConnection.get_collection("answers")
+            if answersCollection.find_one({"question": keyword, "isKeyword": 1}):
+                answersCollection.delete_one({"question": keyword, "isKeyword": 1})
+                return True
+            else:
+                return False
+        else:
+            logger.error("Database connection error")
+            return False
+    except Exception as er:
+        logger.error(er)
+        return False
+
+
 @app.on_callback_query(group=2)
 async def callback_query(Client, Query):
     try:
@@ -493,6 +528,15 @@ async def callback_query(Client, Query):
                 else:
                     await Query.message.edit(
                         f"Sorry, failed to remove @{user} from admin role.")
+
+            elif Query.data.startswith("!removeKeyword "):
+                keyword = Query.data.replace("!removeKeyword ", "")
+                if remove_keyword(keyword):
+                    await Query.message.edit(
+                        f"keyword '{keyword}' removed.")
+                else:
+                    await Query.message.edit(
+                        f"Sorry, failed to remove keyword '{keyword}'.")
 
             elif Query.data == "!train":
                 await Query.message.edit(
