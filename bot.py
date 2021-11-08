@@ -212,6 +212,33 @@ def save_keyword(keyword, response):
         return False
 
 
+def save_scheduled_message(hour, minute, message):
+    try:
+        messageObj = {
+            "hour": hour,
+            "minute": minute,
+            "message": message
+        }
+        if dbConnection:
+            answersCollection = dbConnection.get_collection("schedules")
+            if answersCollection.find_one({"hour": hour, "minute": minute}):
+                answersCollection.update_one({"hour": hour, "minute": minute}, {"$set": {"message": message}})
+                return True
+            else:
+                if answersCollection.insert_one(messageObj):
+                    logger.error("Schedule saved in Database")
+                    return True
+                else:
+                    logger.error("Failed to save Schedule on database")
+                    return False
+        else:
+            logger.error("Database connection error")
+            return False
+    except Exception as er:
+        logger.error(er)
+        return False
+
+
 def get_all_schedules():
     try:
         if dbConnection:
@@ -317,15 +344,20 @@ async def check_msg(Client, message):
                                                admin))
 
             elif message.text.startswith("schedule "):
-                minutes = message.text.replace("schedule ", "")
-                f_search_query = open(f'data/schedule.txt', "w+")
-                f_search_query.write(f"{''.join(minutes)}")
-                f_search_query.close()
-                logger.error("Scheduled message will be set in each {} minutes".format(minutes))
-                scheduler.reschedule_job(job_id='scheduledJob', trigger="interval", minute='*/{}'.format(int(minutes)))
-                await app.send_message(message.from_user.id,
-                                       "Thank you! The scheduled message will be set in each {} minutes".format(
-                                           minutes))
+                text = message.text.replace("schedule ", "").split(",")
+                msg = text[1]
+                time = text[0].split(":")
+                hourInt1 = int(time[0])
+                minuteInt1 = int(time[1])
+
+                if save_scheduled_message(hourInt1, minuteInt1, msg):
+                    logger.error("Scheduled message will be sent on {}h".format(time))
+                    scheduler.reschedule_job(job_id='scheduledJob', trigger="cron", hour=hourInt1, minute=minuteInt1)
+                    await app.send_message(message.from_user.id,
+                                           "Thank you! The Scheduled message will be sent on  {}h".format(
+                                               time))
+                else:
+                    await app.send_message(message.from_user.id, "Sorry! The Scheduled message failed to save")
 
             else:
                 checkKeyword = checkKeywords(message.text)
@@ -466,8 +498,10 @@ def showAllKeywords():
                 logger.error("Retrieving keywords to fetch...")
                 for keyword in keywordsCollection.find({"isKeyword": 1}):
                     row = [
-                        InlineKeyboardButton(text=f"{keyword['question']}", callback_data=f"!answer {keyword['question']}"),
-                        InlineKeyboardButton(text=f"{keyword['answer']}", callback_data=f"!answer {keyword['question']}"),
+                        InlineKeyboardButton(text=f"{keyword['question']}",
+                                             callback_data=f"!answer {keyword['question']}"),
+                        InlineKeyboardButton(text=f"{keyword['answer']}",
+                                             callback_data=f"!answer {keyword['question']}"),
                         InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeKeyword {keyword['question']}")
                     ]
                     rows.append(row)
@@ -497,6 +531,52 @@ def remove_keyword(keyword):
         return False
 
 
+def showAllSchedules():
+    rows = []
+    try:
+        if dbConnection:
+            schedulesCollection = dbConnection.get_collection("schedules")
+            if schedulesCollection.count_documents({}) > 100:
+                logger.error("Too many schedules")
+                return None
+            if schedulesCollection.count_documents({}) <= 0:
+                logger.error("No schedules")
+                return None
+            else:
+                logger.error("Retrieving schedules to fetch...")
+                for scheduled in schedulesCollection.find({}):
+                    row = [
+                        InlineKeyboardButton(text=f"{scheduled['hour']}:{scheduled['minute']}", callback_data=f"!"),
+                        InlineKeyboardButton(text=f"{scheduled['message']}", callback_data=f"!"),
+                        InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeSchedule {scheduled['hour']}:{scheduled['minute']}")
+                    ]
+                    rows.append(row)
+                return InlineKeyboardMarkup(rows)
+        else:
+            logger.error("Database connection error")
+            return None
+    except Exception as er:
+        logger.error(er)
+        return None
+
+
+def remove_schedule(hour, minute):
+    try:
+        if dbConnection:
+            schedulesCollection = dbConnection.get_collection("schedules")
+            if schedulesCollection.find_one({"hour": hour, "minute": minute}):
+                schedulesCollection.delete_one({"hour": hour, "minute": minute})
+                return True
+            else:
+                return False
+        else:
+            logger.error("Database connection error")
+            return False
+    except Exception as er:
+        logger.error(er)
+        return False
+
+
 @app.on_callback_query(group=2)
 async def callback_query(Client, Query):
     try:
@@ -505,9 +585,10 @@ async def callback_query(Client, Query):
                 await Query.message.edit(f'All Keywords:', reply_markup=showAllKeywords())
 
             elif Query.data == "!allshedules":
-                scheduled = open(f'data/schedule.txt', "r").read()
-                await app.send_message(Query.from_user.id,
-                                       f'The scheduled message will be sent in each {scheduled} minutes')
+                if showAllSchedules():
+                    await Query.message.edit(f'All Schedules:', reply_markup=showAllSchedules())
+                else:
+                    await Query.message.edit(f'No Schedules')
 
             elif Query.data == "!allusers":
                 await Query.message.edit(f'All Users:', reply_markup=showAllUsers())
@@ -536,6 +617,15 @@ async def callback_query(Client, Query):
                 else:
                     await Query.message.edit(
                         f"Sorry, failed to remove @{user} from admin role.")
+
+            elif Query.data.startswith("!removeSchedule "):
+                time = Query.data.replace("!removeSchedule ", "").split(":")
+                if remove_schedule(time[0], time[1]):
+                    await Query.message.edit(
+                        f"Schedule {time[0]}:{time[1]} removed from admin role.")
+                else:
+                    await Query.message.edit(
+                        f"Sorry, failed to remove {time[0]}:{time[1]} schedule.")
 
             elif Query.data.startswith("!removeKeyword "):
                 keyword = Query.data.replace("!removeKeyword ", "")
@@ -577,11 +667,10 @@ async def scheduledJob():
 
 # start polling to continuously listen for messages
 if os.path.isfile(f'data/schedule.txt') and schedule > 0:
-    schedule = open(f'data/schedule.txt', "r").read()
-    hour = int()
-    minute = int()
-    scheduler.add_job(scheduledJob, 'cron', hour=22, minute='*/1', args=['scheduledJob'],  id='scheduledJob')
-    scheduler.add_job(scheduledJob, "interval", minutes=int(schedule), id='scheduledJob')
+    schedule = open(f'data/schedule.txt', "r").read().split(":")
+    hourInt = int(schedule[0])
+    minuteInt = int(schedule[1])
+    scheduler.add_job(scheduledJob, 'cron', hour=hourInt, minute=minuteInt, job_id='scheduledJob')
     scheduler.start()
 
 logger.error("Poling started...")

@@ -1,0 +1,55 @@
+2021-11-08 09:14:11,333 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:14:47,095 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:15:07,628 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:15:11,386 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:15:19,003 * root * ERROR * [bot.py:450       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 09:17:24,810 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:18:10,161 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:18:41,337 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:18:55,850 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:20:58,860 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:21:16,095 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:21:18,792 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:45:45,170 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:45:56,779 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:46:04,916 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:47:49,590 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:48:05,448 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:48:29,025 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:48:33,565 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:49:27,359 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:49:37,554 * root * ERROR * [bot.py:204          save_keyword() ] keyword and response saved in Database
+2021-11-08 09:51:01,132 * root * ERROR * [bot.py:204          save_keyword() ] keyword and response saved in Database
+2021-11-08 09:51:54,449 * root * ERROR * [bot.py:204          save_keyword() ] keyword and response saved in Database
+2021-11-08 09:52:08,030 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:52:11,446 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 09:52:34,018 * root * ERROR * [bot.py:36              <module>() ] Bot initialized
+2021-11-08 09:52:34,018 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-08 09:52:34,543 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-08 09:52:34,543 * root * ERROR * [bot.py:558              <module>() ] Poling started...
+2021-11-08 09:52:52,729 * root * ERROR * [bot.py:69          save_message() ] Message saved in Database
+2021-11-08 09:53:02,408 * root * ERROR * [bot.py:448       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 09:53:13,107 * root * ERROR * [bot.py:69          save_message() ] Message saved in Database
+2021-11-08 10:08:23,215 * root * ERROR * [bot.py:36              <module>() ] Bot initialized
+2021-11-08 10:08:23,215 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-08 10:08:23,472 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-08 10:08:23,472 * root * ERROR * [bot.py:575              <module>() ] Poling started...
+2021-11-08 10:08:28,089 * root * ERROR * [bot.py:465       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 10:08:51,768 * root * ERROR * [bot.py:278         checkKeywords() ] 'in <string>' requires string as left operand, not dict
+2021-11-08 10:08:52,343 * root * ERROR * [bot.py:69          save_message() ] Message saved in Database
+2021-11-08 10:09:11,326 * root * ERROR * [bot.py:278         checkKeywords() ] 'in <string>' requires string as left operand, not dict
+2021-11-08 10:14:08,105 * root * ERROR * [bot.py:36              <module>() ] Bot initialized
+2021-11-08 10:14:08,105 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-08 10:14:08,325 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-08 10:14:08,327 * root * ERROR * [bot.py:576              <module>() ] Poling started...
+2021-11-08 10:18:28,646 * root * ERROR * [bot.py:36              <module>() ] Bot initialized
+2021-11-08 10:18:28,646 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-08 10:18:28,866 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-08 10:18:28,866 * root * ERROR * [bot.py:576              <module>() ] Poling started...
+2021-11-08 10:18:49,688 * root * ERROR * [bot.py:69          save_message() ] Message saved in Database
+2021-11-08 10:18:53,873 * root * ERROR * [bot.py:466       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 10:32:29,146 * root * ERROR * [bot.py:69          save_message() ] Message saved in Database
+2021-11-08 10:51:31,663 * root * ERROR * [bot.py:36              <module>() ] Bot initialized
+2021-11-08 10:51:31,663 * root * ERROR * [bot.py:43               connect() ] Database Client initialized.
+2021-11-08 10:51:31,887 * root * ERROR * [bot.py:47               connect() ] Database Connected.
+2021-11-08 10:51:31,888 * root * ERROR * [bot.py:576              <module>() ] Poling started...
