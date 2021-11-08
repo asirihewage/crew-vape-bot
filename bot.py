@@ -620,9 +620,9 @@ async def callback_query(Client, Query):
 
             elif Query.data.startswith("!removeSchedule "):
                 time = Query.data.replace("!removeSchedule ", "").split(":")
-                if remove_schedule(time[0], time[1]):
+                if remove_schedule(int(time[0]), int(time[1])):
                     await Query.message.edit(
-                        f"Schedule {time[0]}:{time[1]} removed from admin role.")
+                        f"Schedule {time[0]}:{time[1]} removed.")
                 else:
                     await Query.message.edit(
                         f"Sorry, failed to remove {time[0]}:{time[1]} schedule.")
