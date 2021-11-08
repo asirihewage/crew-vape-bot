@@ -644,7 +644,7 @@ async def callback_query(Client, Query):
                     f"Please add keywords like this: <b> keyword Keyword_name, Response </b> \nExample: keyword contact, Please contact +947123456 our hotline.")
             elif Query.data == "!newschedule":
                 await Query.message.edit(
-                    f"Please add your scheduled message like this: <b> schedule HH:MM YOURMESSAGE </b> \nExample: schedule 15:30 Hey, Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:50h GMT)")
+                    f"Please add your scheduled message like this: <b> schedule HH:MM YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:50h GMT)")
 
         else:
             await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
