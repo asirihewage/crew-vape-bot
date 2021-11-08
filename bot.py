@@ -7,10 +7,8 @@ Original file is located at https://github.com/asirihewage/crew-vape-bot
 # importing all dependencies
 import logging
 import os
-from threading import Thread
 import pymongo
 import logging.handlers as handlers
-import time
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -309,7 +307,7 @@ async def check_msg(Client, message):
                 f_search_query.write(f"{''.join(minutes)}")
                 f_search_query.close()
                 logger.error("Scheduled message will be set in each {} minutes".format(minutes))
-                scheduler.reschedule_job('scheduledJob', "interval", minutes=int(schedule))
+                scheduler.reschedule_job(job_id='scheduledJob', trigger="interval", minute='*/{}'.format(int(minutes)))
                 await app.send_message(message.from_user.id,
                                        "Thank you! The scheduled message will be set in each {} minutes".format(
                                            minutes))

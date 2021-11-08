@@ -1,0 +1,194 @@
+2021-11-08 00:10:57,853 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:11:06,966 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:23:29,630 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:23:29,630 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:23:29,972 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:23:29,972 * root * ERROR * [bot.py:389              <module>() ] Poling started...
+2021-11-08 00:26:24,031 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:26:24,031 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:26:24,508 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:26:24,509 * root * ERROR * [bot.py:392              <module>() ] Poling started...
+2021-11-08 00:26:32,633 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:26:34,393 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:26:38,651 * root * ERROR * [bot.py:370        callback_query() ] [Errno 2] No such file or directory: 'data/1664758714_status.txt'
+2021-11-08 00:27:08,577 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:27:08,577 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:27:08,714 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:27:08,715 * root * ERROR * [bot.py:387              <module>() ] Poling started...
+2021-11-08 00:38:45,076 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:39:23,463 * root * ERROR * [bot.py:203          save_keyword() ] keyword and response saved in Database
+2021-11-08 00:40:00,125 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:42:05,903 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:42:05,903 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:42:06,262 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:42:06,263 * root * ERROR * [bot.py:389              <module>() ] Poling started...
+2021-11-08 00:42:31,621 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:42:31,621 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:42:31,770 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:42:31,771 * root * ERROR * [bot.py:389              <module>() ] Poling started...
+2021-11-08 00:42:50,588 * root * ERROR * [bot.py:163            get_answer() ] 'isKeyword'
+2021-11-08 00:42:51,780 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:42:54,157 * root * ERROR * [bot.py:163            get_answer() ] 'isKeyword'
+2021-11-08 00:42:55,458 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:44:49,517 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:44:49,517 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:44:49,872 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:44:49,873 * root * ERROR * [bot.py:387              <module>() ] Poling started...
+2021-11-08 00:45:05,017 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 00:45:19,700 * root * ERROR * [bot.py:267             check_msg() ] Scheduled message will be set in each 30 minutes
+2021-11-08 00:45:46,540 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 00:45:46,540 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 00:45:48,852 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 00:45:48,852 * root * ERROR * [bot.py:387              <module>() ] Poling started...
+2021-11-08 00:46:13,857 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:00:39,068 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:00:39,068 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:00:39,378 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:00:39,378 * root * ERROR * [bot.py:446              <module>() ] Poling started...
+2021-11-08 01:01:08,439 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:01:13,388 * root * ERROR * [bot.py:424        callback_query() ] [Errno 2] No such file or directory: 'data/1664758714_session.txt'
+2021-11-08 01:13:04,807 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:13:04,807 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:13:05,109 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:13:05,109 * root * ERROR * [bot.py:464              <module>() ] Poling started...
+2021-11-08 01:13:35,122 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:13:42,144 * root * ERROR * [bot.py:366         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:13:43,995 * root * ERROR * [bot.py:442        callback_query() ] [400 BUTTON_DATA_INVALID]: The button callback data contains invalid data or exceeds 64 bytes (caused by "messages.EditMessage")
+2021-11-08 01:15:23,909 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:15:23,910 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:15:24,131 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:15:24,132 * root * ERROR * [bot.py:465              <module>() ] Poling started...
+2021-11-08 01:15:39,123 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:15:54,392 * root * ERROR * [bot.py:335          showAllUsers() ] No users
+2021-11-08 01:16:04,586 * root * ERROR * [bot.py:367         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:16:05,865 * root * ERROR * [bot.py:443        callback_query() ] [400 BUTTON_DATA_INVALID]: The button callback data contains invalid data or exceeds 64 bytes (caused by "messages.EditMessage")
+2021-11-08 01:16:38,889 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:16:38,889 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:16:39,454 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:16:39,455 * root * ERROR * [bot.py:466              <module>() ] Poling started...
+2021-11-08 01:16:52,792 * root * ERROR * [bot.py:367         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:16:54,892 * root * ERROR * [bot.py:444        callback_query() ] [400 BUTTON_DATA_INVALID]: The button callback data contains invalid data or exceeds 64 bytes (caused by "messages.EditMessage")
+2021-11-08 01:18:03,362 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:18:03,362 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:18:03,634 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:18:03,634 * root * ERROR * [bot.py:466              <module>() ] Poling started...
+2021-11-08 01:18:22,642 * root * ERROR * [bot.py:367         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:18:59,468 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:18:59,468 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:18:59,717 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:18:59,717 * root * ERROR * [bot.py:466              <module>() ] Poling started...
+2021-11-08 01:19:13,148 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:19:19,142 * root * ERROR * [bot.py:367         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:19:19,464 * root * ERROR * [bot.py:444        callback_query() ] 'list' object has no attribute 'write'
+2021-11-08 01:19:32,120 * root * ERROR * [bot.py:335          showAllUsers() ] No users
+2021-11-08 01:20:03,673 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:20:03,673 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:20:04,042 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:20:04,042 * root * ERROR * [bot.py:466              <module>() ] Poling started...
+2021-11-08 01:29:14,124 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:29:14,124 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:29:14,381 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:29:14,382 * root * ERROR * [bot.py:498              <module>() ] Poling started...
+2021-11-08 01:29:59,709 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:35:32,577 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:35:32,577 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:35:32,874 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:35:32,874 * root * ERROR * [bot.py:526              <module>() ] Poling started...
+2021-11-08 01:35:50,232 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:36:20,055 * root * ERROR * [bot.py:413         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:36:24,216 * root * ERROR * [bot.py:504        callback_query() ] 'str' object has no attribute 'startsWith'
+2021-11-08 01:36:45,046 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:36:45,046 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:36:45,282 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:36:45,282 * root * ERROR * [bot.py:526              <module>() ] Poling started...
+2021-11-08 01:36:54,594 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:36:54,594 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:36:54,891 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:36:54,892 * root * ERROR * [bot.py:525              <module>() ] Poling started...
+2021-11-08 01:37:56,056 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:42:06,936 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:42:06,936 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:42:07,141 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:42:07,141 * root * ERROR * [bot.py:535              <module>() ] Poling started...
+2021-11-08 01:42:26,060 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:42:28,605 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:42:34,383 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:42:42,380 * root * ERROR * [bot.py:451       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 01:42:42,795 * root * ERROR * [bot.py:513        callback_query() ] [400 BUTTON_DATA_INVALID]: The button callback data contains invalid data or exceeds 64 bytes (caused by "messages.EditMessage")
+2021-11-08 01:44:33,086 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:44:33,086 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:44:33,288 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:44:33,289 * root * ERROR * [bot.py:533              <module>() ] Poling started...
+2021-11-08 01:44:52,863 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:44:52,863 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:44:52,991 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:44:52,992 * root * ERROR * [bot.py:533              <module>() ] Poling started...
+2021-11-08 01:49:31,021 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:49:37,100 * root * ERROR * [bot.py:449       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 01:49:47,021 * root * ERROR * [bot.py:391          showAllUsers() ] No users
+2021-11-08 01:49:52,785 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:50:30,004 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:50:30,004 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:50:30,217 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:50:30,218 * root * ERROR * [bot.py:532              <module>() ] Poling started...
+2021-11-08 01:50:37,581 * root * ERROR * [bot.py:391          showAllUsers() ] No users
+2021-11-08 01:50:41,100 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:50:43,852 * root * ERROR * [bot.py:421         showAllAdmins() ] Retrieving admins to fetch...
+2021-11-08 01:50:50,381 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:50:52,948 * root * ERROR * [bot.py:393          showAllUsers() ] Retrieving users to fetch...
+2021-11-08 01:51:02,220 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:51:05,099 * root * ERROR * [bot.py:448       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 01:51:12,393 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:51:50,030 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:51:50,031 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:51:50,374 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:51:50,375 * root * ERROR * [bot.py:532              <module>() ] Poling started...
+2021-11-08 01:51:59,501 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:52:03,340 * root * ERROR * [bot.py:448       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 01:52:40,490 * root * ERROR * [bot.py:37              <module>() ] Bot initialized
+2021-11-08 01:52:40,490 * root * ERROR * [bot.py:44               connect() ] Database Client initialized.
+2021-11-08 01:52:40,745 * root * ERROR * [bot.py:48               connect() ] Database Connected.
+2021-11-08 01:52:40,746 * root * ERROR * [bot.py:533              <module>() ] Poling started...
+2021-11-08 01:52:47,185 * root * ERROR * [bot.py:70          save_message() ] Message saved in Database
+2021-11-08 01:52:51,021 * root * ERROR * [bot.py:448       showAllKeywords() ] Retrieving keywords to fetch...
+2021-11-08 01:56:24,060 * root * ERROR * [bot.py:310             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-08 02:05:00,370 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:05:00,370 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:05:00,592 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:05:00,593 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:05:40,277 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 02:05:58,830 * root * ERROR * [bot.py:311             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-08 02:05:59,244 * root * ERROR * [bot.py:337             check_msg() ] __init__() got an unexpected keyword argument 'minutes'
+2021-11-08 02:07:58,321 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:07:58,322 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:07:58,531 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:07:58,531 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:08:17,423 * root * ERROR * [bot.py:311             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-08 02:08:17,752 * root * ERROR * [bot.py:337             check_msg() ] __init__() got an unexpected keyword argument 'minutes'
+2021-11-08 02:11:41,646 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:11:41,646 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:11:41,856 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:11:41,857 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:11:49,664 * root * ERROR * [bot.py:311             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-08 02:11:49,810 * root * ERROR * [bot.py:337             check_msg() ] __init__() got an unexpected keyword argument 'minute'
+2021-11-08 02:15:33,709 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:15:33,709 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:15:33,927 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:15:33,929 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:15:58,490 * root * ERROR * [bot.py:311             check_msg() ] Scheduled message will be set in each 1 minutes
+2021-11-08 02:15:59,255 * root * ERROR * [bot.py:337             check_msg() ] __init__() got an unexpected keyword argument 'minute'
+2021-11-08 02:18:20,941 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 02:19:28,098 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:19:28,099 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:19:28,499 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:19:28,500 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:20:32,802 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
+2021-11-08 02:20:46,879 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:20:46,879 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:20:47,198 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:20:47,198 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:21:36,457 * root * ERROR * [bot.py:38              <module>() ] Bot initialized
+2021-11-08 02:21:36,458 * root * ERROR * [bot.py:45               connect() ] Database Client initialized.
+2021-11-08 02:21:36,624 * root * ERROR * [bot.py:49               connect() ] Database Connected.
+2021-11-08 02:21:36,624 * root * ERROR * [bot.py:534              <module>() ] Poling started...
+2021-11-08 02:21:54,381 * root * ERROR * [bot.py:71          save_message() ] Message saved in Database
