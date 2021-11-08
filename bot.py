@@ -355,7 +355,7 @@ async def check_msg(Client, message):
 
 
 @app.on_message(filters.private & filters.command(['help'], ['/']), group=2)
-async def start(Client, message):
+async def help(Client, message):
     if isAdmin(message):
         helpTextAdmin = f"* HELP TOPICS * \n /start start the bot"
         await app.send_message(message.from_user.id, helpTextAdmin)
@@ -554,7 +554,7 @@ async def callback_query(Client, Query):
                     f"Please add keywords like this: <b> keyword Keyword_name, Response </b> \nExample: keyword contact, Please contact +947123456 our hotline.")
             elif Query.data == "!newschedule":
                 await Query.message.edit(
-                    f"Please change the schedule like this: <b> schedule Minutes </b> \nExample: schedule 30 (The scheduled message will be sent in each 30 minutes)")
+                    f"Please add your scheduled message like this: <b> schedule HH:MM YOURMESSAGE </b> \nExample: schedule 15:30 Hey, Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:50h GMT)")
 
         else:
             await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
@@ -578,6 +578,9 @@ async def scheduledJob():
 # start polling to continuously listen for messages
 if os.path.isfile(f'data/schedule.txt') and schedule > 0:
     schedule = open(f'data/schedule.txt', "r").read()
+    hour = int()
+    minute = int()
+    scheduler.add_job(scheduledJob, 'cron', hour=22, minute='*/1', args=['scheduledJob'],  id='scheduledJob')
     scheduler.add_job(scheduledJob, "interval", minutes=int(schedule), id='scheduledJob')
     scheduler.start()
 
