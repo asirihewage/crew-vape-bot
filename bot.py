@@ -9,7 +9,7 @@ import logging
 import os
 import pymongo
 import logging.handlers as handlers
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from datetime import datetime
@@ -23,7 +23,7 @@ schedule = 0
 ANSWER_ACCURACY_PERCENTAGE = 75
 
 app = Client("bot", bot_token=BOT_TOKEN, parse_mode="combined")
-scheduler = AsyncIOScheduler()
+scheduler = BackgroundScheduler()
 
 # Initialize logging for debugging purpose
 formatter = logging.Formatter(
@@ -352,7 +352,7 @@ async def check_msg(Client, message):
 
                 if save_scheduled_message(hourInt1, minuteInt1, msg):
                     logger.error("Scheduled message will be sent on {}h".format(time))
-                    scheduler.reschedule_job(job_id='scheduledJob', trigger="cron", hour=hourInt1, minute=minuteInt1)
+                    scheduler.reschedule_job('scheduledJob', trigger='cron', hour=hourInt1, minute=minuteInt1)
                     await app.send_message(message.from_user.id,
                                            "Thank you! The Scheduled message will be sent on  {}h".format(
                                                time))
@@ -670,8 +670,8 @@ if os.path.isfile(f'data/schedule.txt') and schedule > 0:
     schedule = open(f'data/schedule.txt', "r").read().split(":")
     hourInt = int(schedule[0])
     minuteInt = int(schedule[1])
-    scheduler.add_job(scheduledJob, 'cron', hour=hourInt, minute=minuteInt, job_id='scheduledJob')
     scheduler.start()
+    job = scheduler.add_job(scheduledJob, 'cron', hour=hourInt, minute=minuteInt, id='scheduledJob')
 
 logger.error("Poling started...")
 app.run()
