@@ -88,7 +88,7 @@ def register_user(message):
             "username": message.from_user.username,
             "first_name": message.from_user.first_name,
             "last_name": message.from_user.last_name,
-            "level": 1
+            "level": 0
         }
         updatedUser = {
             "date": message.date,
