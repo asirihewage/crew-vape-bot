@@ -412,7 +412,7 @@ def showAllUsers():
                 for user in usersCollection.find({"level": 0}):
                     row = [
                         InlineKeyboardButton(text=f"{user['username']}", callback_data=f"!profile {user['username']}"),
-                        InlineKeyboardButton(text=f"X Remove", callback_data=f"!remove {user['username']}")
+                        InlineKeyboardButton(text=f"Promote Admin", callback_data=f"!makeAdmin {user['username']}")
                     ]
                     rows.append(row)
                 return InlineKeyboardMarkup(rows)
@@ -519,6 +519,14 @@ async def callback_query(Client, Query):
                 await Query.message.edit(
                     f'Please add new admin like this: <b> admin username </b> \nExample: '
                     f'admin john.')
+            elif Query.data.startswith("!makeAdmin "):
+                user = Query.data.replace("!makeAdmin ", "")
+                if promote_admin(user):
+                    await Query.message.edit(
+                        f"User @{user} has given an admin role.")
+                else:
+                    await Query.message.edit(
+                        f"Sorry, failed to add @{user} as an admin.")
 
             elif Query.data.startswith("!remove "):
                 user = Query.data.replace("!remove ", "")
