@@ -356,7 +356,6 @@ async def check_msg(Client, message):
 
                 if save_scheduled_message(hourInt1, minuteInt1, msg):
                     logger.error("Scheduled message will be sent on {}h".format(time))
-                    scheduler.reschedule_job('scheduledJob', trigger='cron', hour=hourInt1, minute=minuteInt1)
                     await app.send_message(message.from_user.id,
                                            "Thank you! The Scheduled message will be sent on  {}h".format(
                                                time))
@@ -550,7 +549,7 @@ def showAllSchedules():
                 logger.error("Retrieving schedules to fetch...")
                 for scheduled in schedulesCollection.find({}):
                     row = [
-                        InlineKeyboardButton(text=f"ID{scheduled['id']}", callback_data=f"!"),
+                        InlineKeyboardButton(text=f"ID:{scheduled['id']}", callback_data=f"!"),
                         InlineKeyboardButton(text=f"{scheduled['hour']}:{scheduled['minute']}", callback_data=f"!"),
                         InlineKeyboardButton(text=f"{scheduled['message']}", callback_data=f"!"),
                         InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeSchedule {scheduled['id']}")
@@ -676,16 +675,17 @@ async def scheduledJob(message):
 
 # start polling to continuously listen for messages
 if dbConnection:
-    schedulesCollection = dbConnection.get_collection("schedules")
-    if schedulesCollection.count_documents({}) > 100:
+    schedulesCollection1 = dbConnection.get_collection("schedules")
+    if schedulesCollection1.count_documents({}) > 100:
         logger.error("Too many schedules")
-    if schedulesCollection.count_documents({}) <= 0:
+    if schedulesCollection1.count_documents({}) <= 0:
         logger.error("No schedules")
     else:
         logger.error("Retrieving schedules to fetch...")
-        for scheduled in schedulesCollection.find_one({}):
+        for scheduled in schedulesCollection1.find({}):
+            print(scheduled)
             job = scheduler.add_job(scheduledJob, 'cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']))
-
+            print(job)
 
 logger.error("Poling started...")
 app.run()
