@@ -85,24 +85,24 @@ def save_message(messageObj):
 def register_user(message):
     try:
         messageObj = {
-            "id": message.chat.id,
+            "id": message.from_user.id,
             "date": message.date,
             "type": message.chat.type,
-            "username": message.chat.username,
-            "first_name": message.chat.first_name,
-            "last_name": message.chat.last_name,
+            "username": message.from_user.username,
+            "first_name": message.from_user.first_name,
+            "last_name": message.from_user.last_name,
             "level": 0
         }
         updatedUser = {
             "date": message.date,
-            "username": message.chat.username,
-            "first_name": message.chat.first_name,
-            "last_name": message.chat.last_name
+            "username": message.from_user.username,
+            "first_name": message.from_user.first_name,
+            "last_name": message.from_user.last_name
         }
         if dbConnection:
             usersCollection = dbConnection.get_collection("users")
-            if usersCollection.find_one({"id": message.chat.id}):
-                usersCollection.update_one({"id": message.chat.id}, {"$set": updatedUser})
+            if usersCollection.find_one({"id": message.from_user.id}):
+                usersCollection.update_one({"id": message.from_user.id}, {"$set": updatedUser})
             else:
                 if usersCollection.insert_one(messageObj):
                     logger.error("User saved in Database")
@@ -122,7 +122,7 @@ def checkUser(message):
     try:
         if dbConnection:
             usersCollection = dbConnection.get_collection("users")
-            if usersCollection.find_one({"id": message.chat.id, "level": 0}):
+            if usersCollection.find_one({"id": message.from_user.id, "level": 0}):
                 return True
             else:
                 return False
@@ -135,7 +135,7 @@ def isAdmin(message):
     try:
         if dbConnection:
             usersCollection = dbConnection.get_collection("users")
-            if usersCollection.find_one({"id": message.chat.id, "level": 1}):
+            if usersCollection.find_one({"id": message.from_user.id, "level": 1}):
                 return True
             else:
                 return False
@@ -310,12 +310,17 @@ def checkKeywords(message):
         logger.error(e)
 
 
-@app.on_message(filters.text & filters.private)
+@app.on_message(filters.text)
 async def check_msg(Client, message):
     try:
         dateS = message['date']
         dateSent = datetime.fromtimestamp(dateS)
         minutes_diff = (datetime.now() - dateSent).total_seconds() / 60.0
+
+        if message.chat.type == "private":
+            chat_id = message.from_user.id
+        else:
+            chat_id = message.chat.id
 
         if minutes_diff < 2:
             register_user(message)
@@ -323,27 +328,27 @@ async def check_msg(Client, message):
                 if isAdmin(message):
                     txt = message.text.replace("learn ", "").split(",")
                     save_answer(txt[0], txt[1])
-                    await app.send_message(message.chat.id, f"Thank you! I will remember that.")
+                    await app.send_message(message.from_user.id, f"Thank you! I will remember that.")
                     logger.error("Question: {} Answer: {}".format(txt[0], txt[1]))
                 else:
-                    await app.send_message(message.chat.id,
-                                           f"Oopz! You are not an admin. {message.chat.mention}")
+                    await app.send_message(message.from_user.id,
+                                           f"Oopz! You are not an admin. {message.from_user.mention}")
 
             elif message.text.startswith("keyword "):
                 keywords = message.text.replace("keyword ", "").split(",")
                 keyword = keywords[0]
                 response = keywords[1]
                 save_keyword(keyword, response)
-                await app.send_message(message.chat.id,
+                await app.send_message(message.from_user.id,
                                        "The keyword {} has been saved with the predefined response: {}".format(keyword,
                                                                                                                response))
             elif message.text.startswith("admin "):
                 admin = message.text.replace("admin ", "")
                 if promote_admin(admin):
-                    await app.send_message(message.chat.id,
+                    await app.send_message(message.from_user.id,
                                            "The user @{} has been promoted as an admin.".format(admin))
                 else:
-                    await app.send_message(message.chat.id,
+                    await app.send_message(message.from_user.id,
                                            "Sorry! The user @{} has not been promoted as an admin. Please check whether the user is already using this bot.".format(
                                                admin))
 
@@ -357,19 +362,19 @@ async def check_msg(Client, message):
                 if save_scheduled_message(hourInt1, minuteInt1, msg):
                     logger.error("Scheduled message will be sent on {}h".format(time))
                     refresh_schedules()
-                    await app.send_message(message.chat.id,
+                    await app.send_message(message.from_user.id,
                                            "Thank you! The Scheduled message will be sent on  {}h".format(
                                                ':'.join(time)))
                 else:
-                    await app.send_message(message.chat.id, "Sorry! The Scheduled message failed to save")
+                    await app.send_message(message.from_user.id, "Sorry! The Scheduled message failed to save")
 
             else:
                 checkKeyword = checkKeywords(message.text)
                 getAnswer = get_answer(message.text)
                 if checkKeyword:
-                    await app.send_message(message.chat.id, f'{checkKeyword}')
+                    await app.send_message(chat_id, f'{checkKeyword}')
                 elif getAnswer:
-                    await app.send_message(message.chat.id, f'{getAnswer}')
+                    await app.send_message(chat_id, f'{getAnswer}')
                 else:
                     messageObj = {
                         "chat_id": message.chat.id,
@@ -377,10 +382,10 @@ async def check_msg(Client, message):
                         "date": message.date,
                         "type": message.chat.type,
                         "text": message.text,
-                        "user": message.chat.id,
-                        "username": message.chat.username,
-                        "first_name": message.chat.first_name,
-                        "last_name": message.chat.last_name
+                        "user": chat_id,
+                        "username": message.from_user.username,
+                        "first_name": message.from_user.first_name,
+                        "last_name": message.from_user.last_name
                     }
                     save_message(messageObj)
 
@@ -394,10 +399,10 @@ async def check_msg(Client, message):
 async def help(Client, message):
     if isAdmin(message):
         helpTextAdmin = f"* HELP TOPICS * \n /start start the bot"
-        await app.send_message(message.chat.id, helpTextAdmin)
+        await app.send_message(message.from_user.id, helpTextAdmin)
     else:
         helpTextUser = f"* HELP TOPICS * \n /start start the bot"
-        await app.send_message(message.chat.id, helpTextUser)
+        await app.send_message(message.from_user.id, helpTextUser)
 
 
 @app.on_message(filters.private & filters.command(['start'], ['/']), group=2)
@@ -425,12 +430,12 @@ async def start(Client, message):
                 ]
             ]
         )
-        await app.send_message(message.chat.id,
-                               f'Hi {message.chat.mention}\n\n<i>Choose one of the option below.</i>',
+        await app.send_message(message.from_user.id,
+                               f'Hi {message.from_user.mention}\n\n<i>Choose one of the option below.</i>',
                                reply_markup=keyboard)
     else:
-        await app.send_message(message.chat.id,
-                               f'You are not allowed to use admin functions {message.chat.mention}')
+        await app.send_message(message.from_user.id,
+                               f'You are not allowed to use admin functions {message.from_user.mention}')
 
 
 def showAllUsers():
@@ -652,7 +657,7 @@ async def callback_query(Client, Query):
                     f"Please add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
 
         else:
-            await app.send_message(Query.chat.id, f'You are not allowed to use the bot @{Query.chat.mention}')
+            await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
 
     except Exception as e:
         logger.error(e)
