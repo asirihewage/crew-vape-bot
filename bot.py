@@ -221,7 +221,7 @@ def save_scheduled_message(hour, minute, message):
             "hour": hour,
             "minute": minute,
             "message": message,
-            "id": ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10000))
+            "id": ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(5))
         }
         if dbConnection:
             answersCollection = dbConnection.get_collection("schedules")
