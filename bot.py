@@ -356,9 +356,10 @@ async def check_msg(Client, message):
 
                 if save_scheduled_message(hourInt1, minuteInt1, msg):
                     logger.error("Scheduled message will be sent on {}h".format(time))
+                    refresh_schedules()
                     await app.send_message(message.from_user.id,
                                            "Thank you! The Scheduled message will be sent on  {}h".format(
-                                               time))
+                                               ':'.join(time)))
                 else:
                     await app.send_message(message.from_user.id, "Sorry! The Scheduled message failed to save")
 
@@ -673,19 +674,22 @@ async def scheduledJob(message):
         return False
 
 
-# start polling to continuously listen for messages
-if dbConnection:
-    schedulesCollection1 = dbConnection.get_collection("schedules")
-    if schedulesCollection1.count_documents({}) > 100:
-        logger.error("Too many schedules")
-    if schedulesCollection1.count_documents({}) <= 0:
-        logger.error("No schedules")
-    else:
-        logger.error("Retrieving schedules to fetch...")
-        for scheduled in schedulesCollection1.find({}):
-            print(scheduled)
-            job = scheduler.add_job(scheduledJob, 'cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']))
-            print(job)
+def refresh_schedules():
+    logger.error("Refreshing Scheduled jobs ... ")
+    scheduler.remove_all_jobs()
+    # start polling to continuously listen for messages
+    if dbConnection:
+        schedulesCollection1 = dbConnection.get_collection("schedules")
+        if schedulesCollection1.count_documents({}) > 100:
+            logger.error("Too many schedules")
+        if schedulesCollection1.count_documents({}) <= 0:
+            logger.error("No schedules")
+        else:
+            logger.error("Retrieving schedules to fetch...")
+            for scheduled in schedulesCollection1.find({}):
+                job = scheduler.add_job(scheduledJob, 'cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']))
+                logger.error(job)
 
+refresh_schedules()
 logger.error("Poling started...")
 app.run()
