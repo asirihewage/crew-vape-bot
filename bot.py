@@ -7,6 +7,9 @@ Original file is located at https://github.com/asirihewage/crew-vape-bot
 # importing all dependencies
 import logging
 import os
+import random
+import string
+
 import pymongo
 import logging.handlers as handlers
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -217,7 +220,8 @@ def save_scheduled_message(hour, minute, message):
         messageObj = {
             "hour": hour,
             "minute": minute,
-            "message": message
+            "message": message,
+            "id": ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10000))
         }
         if dbConnection:
             answersCollection = dbConnection.get_collection("schedules")
@@ -347,8 +351,8 @@ async def check_msg(Client, message):
                 text = message.text.replace("schedule ", "").split(",")
                 msg = text[1]
                 time = text[0].split(":")
-                hourInt1 = int(time[0])
-                minuteInt1 = int(time[1])
+                hourInt1 = int(time[0].replace(" ", ""))
+                minuteInt1 = int(time[1].replace(" ", ""))
 
                 if save_scheduled_message(hourInt1, minuteInt1, msg):
                     logger.error("Scheduled message will be sent on {}h".format(time))
@@ -546,9 +550,10 @@ def showAllSchedules():
                 logger.error("Retrieving schedules to fetch...")
                 for scheduled in schedulesCollection.find({}):
                     row = [
+                        InlineKeyboardButton(text=f"ID{scheduled['id']}", callback_data=f"!"),
                         InlineKeyboardButton(text=f"{scheduled['hour']}:{scheduled['minute']}", callback_data=f"!"),
                         InlineKeyboardButton(text=f"{scheduled['message']}", callback_data=f"!"),
-                        InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeSchedule {scheduled['hour']}:{scheduled['minute']}")
+                        InlineKeyboardButton(text=f"X Remove", callback_data=f"!removeSchedule {scheduled['id']}")
                     ]
                     rows.append(row)
                 return InlineKeyboardMarkup(rows)
@@ -560,12 +565,12 @@ def showAllSchedules():
         return None
 
 
-def remove_schedule(hour, minute):
+def remove_schedule(id):
     try:
         if dbConnection:
             schedulesCollection = dbConnection.get_collection("schedules")
-            if schedulesCollection.find_one({"hour": hour, "minute": minute}):
-                schedulesCollection.delete_one({"hour": hour, "minute": minute})
+            if schedulesCollection.find_one({"id": id}):
+                schedulesCollection.delete_one({"id": id})
                 return True
             else:
                 return False
@@ -619,13 +624,13 @@ async def callback_query(Client, Query):
                         f"Sorry, failed to remove @{user} from admin role.")
 
             elif Query.data.startswith("!removeSchedule "):
-                time = Query.data.replace("!removeSchedule ", "").split(":")
-                if remove_schedule(int(time[0]), int(time[1])):
+                id = Query.data.replace("!removeSchedule ", "")
+                if remove_schedule(id):
                     await Query.message.edit(
-                        f"Schedule {time[0]}:{time[1]} removed.")
+                        f"Schedule {id} removed.")
                 else:
                     await Query.message.edit(
-                        f"Sorry, failed to remove {time[0]}:{time[1]} schedule.")
+                        f"Sorry, failed to remove {id} schedule.")
 
             elif Query.data.startswith("!removeKeyword "):
                 keyword = Query.data.replace("!removeKeyword ", "")
@@ -644,7 +649,7 @@ async def callback_query(Client, Query):
                     f"Please add keywords like this: <b> keyword Keyword_name, Response </b> \nExample: keyword contact, Please contact +947123456 our hotline.")
             elif Query.data == "!newschedule":
                 await Query.message.edit(
-                    f"Please add your scheduled message like this: <b> schedule HH:MM YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:50h GMT)")
+                    f"Please add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
 
         else:
             await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
@@ -655,23 +660,32 @@ async def callback_query(Client, Query):
         pass
 
 
-async def scheduledJob():
+async def scheduledJob(message):
     try:
-        logger.info("Scheduled message")
-        await app.send_message('1664758714', 'Scheduled Message')
-        return True
+        if dbConnection:
+            usersCollection = dbConnection.get_collection("users")
+            users = usersCollection.find({})
+            for user in users:
+                await app.send_message(user["id"], message)
+                logger.info("Scheduled message sent to {}".format(user["id"]))
+            return True
     except Exception as e:
         logger.error(e)
         return False
 
 
 # start polling to continuously listen for messages
-if os.path.isfile(f'data/schedule.txt') and schedule > 0:
-    schedule = open(f'data/schedule.txt', "r").read().split(":")
-    hourInt = int(schedule[0])
-    minuteInt = int(schedule[1])
-    scheduler.start()
-    job = scheduler.add_job(scheduledJob, 'cron', hour=hourInt, minute=minuteInt, id='scheduledJob')
+if dbConnection:
+    schedulesCollection = dbConnection.get_collection("schedules")
+    if schedulesCollection.count_documents({}) > 100:
+        logger.error("Too many schedules")
+    if schedulesCollection.count_documents({}) <= 0:
+        logger.error("No schedules")
+    else:
+        logger.error("Retrieving schedules to fetch...")
+        for scheduled in schedulesCollection.find_one({}):
+            job = scheduler.add_job(scheduledJob, 'cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']))
+
 
 logger.error("Poling started...")
 app.run()
