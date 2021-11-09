@@ -18,7 +18,7 @@ from fuzzywuzzy import fuzz
 # Getting environment variables from Heroku configs if not overriden
 BOT_MONGODB_CONECTION_URL = "mongodb+srv://sampleUsername:samplePassword@cluster0.lok9v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 BOT_DATABASE_NAME = "TelegramBotCrewVape"
-BOT_TOKEN = "2100863462:AAHK3vbFTjDPa5mIUhI8uY5HkbvufDKGi28"
+BOT_TOKEN = "2041045930:AAGYTB6grvbbE_Fp6hYWGNKHkkQodscW05k"
 schedule = 0
 ANSWER_ACCURACY_PERCENTAGE = 75
 
