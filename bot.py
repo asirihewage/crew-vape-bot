@@ -683,6 +683,7 @@ def refresh_schedules():
     logger.error("Refreshing Scheduled jobs ... ")
     try:
         scheduler.remove_all_jobs(jobstore='schedules')
+        scheduler.add_jobstore(jobstore='schedules')
     except:
         pass
     # start polling to continuously listen for messages
