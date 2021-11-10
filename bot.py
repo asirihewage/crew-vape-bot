@@ -681,7 +681,7 @@ async def scheduledJob(message):
 
 def refresh_schedules():
     logger.error("Refreshing Scheduled jobs ... ")
-    scheduler.remove_all_jobs()
+    scheduler.remove_all_jobs(jobstore='schedules')
     # start polling to continuously listen for messages
     if dbConnection:
         schedulesCollection1 = dbConnection.get_collection("schedules")
@@ -690,10 +690,10 @@ def refresh_schedules():
         if schedulesCollection1.count_documents({}) <= 0:
             logger.error("No schedules")
         else:
+            scheduler.start()
             logger.error("Retrieving schedules to fetch...")
             for scheduled in schedulesCollection1.find({}):
-                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
-            scheduler.start()
+                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), jobstore='schedules', minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
             logger.error(scheduler.get_jobs())
 
 
