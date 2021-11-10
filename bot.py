@@ -681,7 +681,10 @@ async def scheduledJob(message):
 
 def refresh_schedules():
     logger.error("Refreshing Scheduled jobs ... ")
-    scheduler.remove_all_jobs(jobstore='schedules')
+    try:
+        scheduler.remove_all_jobs(jobstore='schedules')
+    except:
+        pass
     # start polling to continuously listen for messages
     if dbConnection:
         schedulesCollection1 = dbConnection.get_collection("schedules")
