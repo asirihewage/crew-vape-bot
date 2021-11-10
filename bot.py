@@ -692,7 +692,7 @@ def refresh_schedules():
         else:
             logger.error("Retrieving schedules to fetch...")
             for scheduled in schedulesCollection1.find({}):
-                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), id=str(scheduled['id']), timezone='Asia/Dubai')
+                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
             scheduler.start()
             logger.error(scheduler.get_jobs())
 

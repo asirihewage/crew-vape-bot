@@ -13,7 +13,7 @@ def print_date_time():
 scheduler.add_job(func=print_date_time, trigger='cron', hour=1, minute=2, id=str('test'), timezone='Asia/Dubai')
 scheduler.start()
 
-scheduler.reschedule_job(job_id=str('test'), trigger='cron', hour=1, minute=12)
+scheduler.reschedule_job(job_id=str('test'), trigger='cron', hour=1, minute=20)
 print(scheduler.get_jobs())
 
 time.sleep(10000)
