@@ -215,13 +215,13 @@ def save_keyword(keyword, response):
         return False
 
 
-def save_scheduled_message(hour, minute, message):
+def save_scheduled_message(hour, minute, message, id):
     try:
         messageObj = {
             "hour": hour,
             "minute": minute,
             "message": message,
-            "id": ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(5))
+            "id": id
         }
         if dbConnection:
             answersCollection = dbConnection.get_collection("schedules")
@@ -359,9 +359,10 @@ async def check_msg(Client, message):
                 hourInt1 = int(time[0].replace(" ", ""))
                 minuteInt1 = int(time[1].replace(" ", ""))
 
-                if save_scheduled_message(hourInt1, minuteInt1, msg):
+                jobId = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(5))
+                if save_scheduled_message(hourInt1, minuteInt1, msg, jobId):
                     logger.error("Scheduled message will be sent on {}h".format(time))
-                    refresh_schedules()
+                    scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(hourInt1), minute=int(minuteInt1), args=[msg], id=str(jobId), timezone='Asia/Dubai')
                     await app.send_message(message.from_user.id,
                                            "Thank you! The Scheduled message will be sent on  {}h".format(
                                                ':'.join(time)))
@@ -656,7 +657,7 @@ async def callback_query(Client, Query):
                 tz = pytz.timezone('Asia/Dubai')
                 berlin_now = datetime.now(tz).strftime("%H:%M %p")
                 await Query.message.edit(
-                    f"<b>Current TimeZone</b>: Asia/Dubai \n<b>Current Time</b>: {berlin_now} \nPlease add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
+                    f"<b>•Current TimeZone</b>: Asia/Dubai \n<b>•Current Time</b>: {berlin_now} \nPlease add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
 
         else:
             await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
@@ -681,28 +682,29 @@ async def scheduledJob(message):
         return False
 
 
-def refresh_schedules():
-    logger.error("Refreshing Scheduled jobs ... ")
-    try:
-        scheduler.remove_all_jobs()
-    except:
-        pass
-    # start polling to continuously listen for messages
-    if dbConnection:
-        schedulesCollection1 = dbConnection.get_collection("schedules")
-        if schedulesCollection1.count_documents({}) > 100:
-            logger.error("Too many schedules")
-        if schedulesCollection1.count_documents({}) <= 0:
-            logger.error("No schedules")
-        else:
-            scheduler.start()
-            logger.error("Retrieving schedules to fetch...")
-            for scheduled in schedulesCollection1.find({}):
-                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
-            logger.error(scheduler.get_jobs())
-
-
-refresh_schedules()
+# def refresh_schedules():
+#     logger.error("Refreshing Scheduled jobs ... ")
+#     try:
+#         scheduler.remove_all_jobs()
+#         scheduler.
+#     except:
+#         pass
+#     # start polling to continuously listen for messages
+#     if dbConnection:
+#         schedulesCollection1 = dbConnection.get_collection("schedules")
+#         if schedulesCollection1.count_documents({}) > 100:
+#             logger.error("Too many schedules")
+#         if schedulesCollection1.count_documents({}) <= 0:
+#             logger.error("No schedules")
+#         else:
+#             scheduler.start()
+#             logger.error("Retrieving schedules to fetch...")
+#             for scheduled in schedulesCollection1.find({}):
+#                 scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
+#             logger.error(scheduler.get_jobs())
+#
+#
+# refresh_schedules()
 
 logger.error("Poling started...")
 app.run()
