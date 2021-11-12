@@ -362,10 +362,11 @@ async def check_msg(Client, message):
                 jobId = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(5))
                 if save_scheduled_message(hourInt1, minuteInt1, msg, jobId):
                     logger.error("Scheduled message will be sent on {}h".format(time))
-                    scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(hourInt1), minute=int(minuteInt1), args=[msg], id=str(jobId), timezone='Asia/Dubai')
+                    res = scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(hourInt1), minute=int(minuteInt1), args=[msg], id=str(jobId), timezone='Asia/Dubai')
+                    print(res)
                     await app.send_message(message.from_user.id,
-                                           "Thank you! The Scheduled message will be sent on  {}h Asia/dubai timezone".format(
-                                               ':'.join(time)))
+                                           "Thank you! The Scheduled message will be sent on  {}h Asia/dubai timezone. \nMessage: {}".format(
+                                               ':'.join(time), msg))
                 else:
                     await app.send_message(message.from_user.id, "Sorry! The Scheduled message failed to save")
 
