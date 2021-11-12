@@ -12,7 +12,7 @@ import string
 import pytz
 import pymongo
 import logging.handlers as handlers
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from datetime import datetime
@@ -26,7 +26,7 @@ schedule = 0
 ANSWER_ACCURACY_PERCENTAGE = 75
 
 app = Client("bot", bot_token=BOT_TOKEN, parse_mode="combined")
-scheduler = BackgroundScheduler()
+scheduler = BlockingScheduler()
 
 # Initialize logging for debugging purpose
 formatter = logging.Formatter(
