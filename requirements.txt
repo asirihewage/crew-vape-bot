@@ -7,3 +7,4 @@ fuzzywuzzy~=0.18.0
 requests~=2.26.0
 apscheduler~=3.6.3
 tgcrypto
+python-Levenshtein
