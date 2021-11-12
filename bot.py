@@ -9,7 +9,7 @@ import logging
 import os
 import random
 import string
-
+import pytz
 import pymongo
 import logging.handlers as handlers
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -653,8 +653,10 @@ async def callback_query(Client, Query):
                 await Query.message.edit(
                     f"Please add keywords like this: <b> keyword Keyword_name, Response </b> \nExample: keyword contact, Please contact +947123456 our hotline.")
             elif Query.data == "!newschedule":
+                tz = pytz.timezone('Asia/Dubai')
+                berlin_now = datetime.now(tz).strftime("%H:%M %p")
                 await Query.message.edit(
-                    f"Please add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
+                    f"<b>Current TimeZone</b>: Asia/Dubai \n<b>Current Time</b>: {berlin_now} \nPlease add your scheduled message like this: <b> schedule HH:MM,YOURMESSAGE </b> \nExample: schedule 15:30, Hey! Let's get into the chat in another 30 minutes! (The scheduled message will be sent everyday at 15:30h GMT)")
 
         else:
             await app.send_message(Query.from_user.id, f'You are not allowed to use the bot @{Query.from_user.mention}')
@@ -682,8 +684,7 @@ async def scheduledJob(message):
 def refresh_schedules():
     logger.error("Refreshing Scheduled jobs ... ")
     try:
-        scheduler.remove_all_jobs(jobstore='schedules')
-        scheduler.add_jobstore(jobstore='schedules')
+        scheduler.remove_all_jobs()
     except:
         pass
     # start polling to continuously listen for messages
@@ -697,7 +698,7 @@ def refresh_schedules():
             scheduler.start()
             logger.error("Retrieving schedules to fetch...")
             for scheduled in schedulesCollection1.find({}):
-                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), jobstore='schedules', minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
+                scheduler.add_job(func=scheduledJob, trigger='cron', hour=int(scheduled['hour']), minute=int(scheduled['minute']), args=[scheduled['message']], id=str(scheduled['id']), timezone='Asia/Dubai')
             logger.error(scheduler.get_jobs())
 
 
